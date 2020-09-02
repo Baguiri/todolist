@@ -24,12 +24,13 @@ class App extends Component {
       title: this.state.item,
     };
     const updatedItems = [...this.state.items, newItem];
-    this.setState({
-      items: updatedItems,
-      item: "",
-      id: uuid(),
-      editItem: false,
-    });
+    if (this.state.item !== "")
+      this.setState({
+        items: updatedItems,
+        item: "",
+        id: uuid(),
+        editItem: false,
+      });
   };
   handleClearList = () => {
     this.setState({
@@ -42,6 +43,7 @@ class App extends Component {
       items: filterItems,
     });
   };
+
   handleEdit = (id) => {
     const filterItems = this.state.items.filter((item) => item.id !== id);
     const selectedItem = this.state.items.find((item) => item.id === id);
@@ -58,8 +60,8 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-10 mx-auto col-md-8 mt-4">
-            <h3 className="text-capitalize text-center">todo input</h3>
+          <div className="col-10 mx-auto col-md-8 mt-5">
+            <h3 className="text-capitalize text-center">add something</h3>
             <TotoInput
               item={this.state.item}
               handleChange={this.handleChange}

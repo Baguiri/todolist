@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "../styles/TodoItem.css";
 class TodoItems extends Component {
   state = {};
   render() {
